@@ -19,3 +19,4 @@ services:
 networks:
   cinepik-network:
     name: cinepik-network
+    external: true

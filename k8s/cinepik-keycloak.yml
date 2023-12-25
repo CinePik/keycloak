@@ -15,7 +15,7 @@ spec:
       containers:
         - image: sebam/cinepik-keycloak:latest
           name: cinepik-keycloak
-          command: ['/opt/keycloak/bin/kc.sh']
+          command: ['/opt/keycloak/bin/kc.sh', 'start-dev', '--import-realm']
           args: ['start-dev']
           env:
             - name: KEYCLOAK_PORT
