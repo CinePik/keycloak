@@ -15,7 +15,10 @@ spec:
       containers:
         - image: sebam/cinepik-keycloak:latest
           name: cinepik-keycloak
+          command: ['/opt/keycloak/bin/kc.sh']
+          args: ['start-dev', '--import-realm']
           env:
+            # Inject variables from a Kuberentes ConfigMap
             - name: KEYCLOAK_ADMIN
               valueFrom:
                 secretKeyRef:
@@ -29,6 +32,14 @@ spec:
           ports:
             - containerPort: 8080
               name: server
+          volumeMounts:
+            - name: seed
+              mountPath: '/opt/keycloak/data/import'
+              readOnly: true
+      volumes:
+        - name: seed
+          configMap:
+            name: cinepik-realm
 ---
 apiVersion: v1
 kind: Service
