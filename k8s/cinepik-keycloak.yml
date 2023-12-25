@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cinepik-keycloak-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: cinepik-keycloak
+  template:
+    metadata:
+      labels:
+        app: cinepik-keycloak
+    spec:
+      containers:
+        - image: sebam/cinepik-keycloak:latest
+          name: cinepik-keycloak
+          ports:
+            - containerPort: 8080
+              name: server
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: cinepik-keycloak
+spec:
+  type: LoadBalancer
+  ports:
+    - port: 80
+      protocol: TCP
+      targetPort: server
+  selector:
+    app: cinepik-keycloak
