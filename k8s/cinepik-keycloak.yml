@@ -15,7 +15,6 @@ spec:
       containers:
         - image: sebam/cinepik-keycloak:latest
           name: cinepik-keycloak
-          env:
           ports:
             - containerPort: 8080
               name: server
