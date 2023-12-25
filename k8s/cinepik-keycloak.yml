@@ -18,8 +18,11 @@ spec:
           command: ['/opt/keycloak/bin/kc.sh', 'start-dev', '--import-realm']
           args: ['start-dev']
           env:
-            - name: KEYCLOAK_PORT
-              value: '8080'
+            # Inject variables from a Kuberentes ConfigMap
+            - name: config_variables
+              valueFrom:
+                configMapRef:
+                  name: keycloak-config
             - name: KEYCLOAK_ADMIN
               valueFrom:
                 secretKeyRef:
