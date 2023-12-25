@@ -34,9 +34,9 @@ jobs:
           file: ./Dockerfile
           push: true
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/cinepik-keycloak:latest, ${{ secrets.DOCKERHUB_USERNAME }}/cinepik-keycloak:${{ steps.current-time.outputs.formattedTime }}
-          env:
-            KEYCLOAK_ADMIN: ${{ secrets.KEYCLOAK_ADMIN }}
-            KEYCLOAK_ADMIN_PASSWORD: ${{ secrets.KEYCLOAK_ADMIN_PASSWORD }}
+        env:
+          KEYCLOAK_ADMIN: ${{ secrets.KEYCLOAK_ADMIN }}
+          KEYCLOAK_ADMIN_PASSWORD: ${{ secrets.KEYCLOAK_ADMIN_PASSWORD }}
 
       - name: Notify success
         if: success()
