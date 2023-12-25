@@ -1,0 +1,21 @@
+version: '3.8'
+
+name: keycloak
+services:
+  keycloak:
+    container_name: cinepik-keycloak
+    image: quay.io/keycloak/keycloak:23.0.1
+    ports:
+      - ${KEYCLOAK_PORT}:${KEYCLOAK_PORT}
+    volumes:
+      - ./data/:/opt/keycloak/data/import:ro
+    entrypoint: '/opt/keycloak/bin/kc.sh start-dev --import-realm'
+    restart: always
+    networks:
+      - cinepik-network
+    env_file:
+      - .env
+
+networks:
+  cinepik-network:
+    name: cinepik-network
