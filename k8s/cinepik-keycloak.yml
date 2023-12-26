@@ -29,6 +29,11 @@ spec:
                 secretKeyRef:
                   name: keycloak-credentials
                   key: KEYCLOAK_ADMIN_PASSWORD
+            - name: KEYCLOAK_PORT
+              valueFrom:
+                configMapKeyRef:
+                  name: keycloak-config
+                  key: KEYCLOAK_PORT
           ports:
             - containerPort: 8080
               name: server
