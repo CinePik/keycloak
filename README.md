@@ -4,7 +4,9 @@ Keycloak microservice for identity and access management.
 
 ## Setup
 
-### Copy Keycloak seed file to the k8s config map
+### Load Keycloak seed file
+
+Copy `cinepik-realm.json`  to the `data` directory for local deployment or copy it to the k8s config map for cloud deployment.
 
 ```bash
 kubectl create configmap cinepik-realm --from-file=cinepik-realm.json=data/cinepik-realm.json
