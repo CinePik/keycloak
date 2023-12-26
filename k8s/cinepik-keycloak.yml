@@ -16,7 +16,7 @@ spec:
         - image: sebam/cinepik-keycloak:latest
           name: cinepik-keycloak
           command: ['/opt/keycloak/bin/kc.sh']
-          args: ['start-dev', '--import-realm']
+          args: ['--verbose', 'start-dev', '--import-realm']
           env:
             # Inject variables from a Kuberentes ConfigMap
             - name: KEYCLOAK_ADMIN
@@ -34,6 +34,7 @@ spec:
                 configMapKeyRef:
                   name: keycloak-config
                   key: KEYCLOAK_PORT
+
           ports:
             - containerPort: 8080
               name: server
