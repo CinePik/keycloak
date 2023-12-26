@@ -9,3 +9,9 @@ Keycloak microservice for identity and access management.
 ```bash
 kubectl create configmap cinepik-realm --from-file=cinepik-realm.json=data/cinepik-realm.json
 ```
+
+### Deploy
+
+```bash
+kubectl apply -f k8s\cinepik-keycloak.yml
+```

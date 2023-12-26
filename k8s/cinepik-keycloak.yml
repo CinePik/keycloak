@@ -18,7 +18,6 @@ spec:
           command: ['/opt/keycloak/bin/kc.sh']
           args: ['--verbose', 'start-dev', '--import-realm']
           env:
-            # Inject variables from a Kuberentes ConfigMap
             - name: KEYCLOAK_ADMIN
               valueFrom:
                 secretKeyRef:
