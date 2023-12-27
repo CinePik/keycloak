@@ -14,6 +14,13 @@ spec:
     spec:
       containers:
         - image: sebam/cinepik-keycloak:latest
+          resources:
+            requests:
+              cpu: 100m
+              memory: 512Mi
+            limits:
+              cpu: 250m
+              memory: 1Gi
           name: cinepik-keycloak
           command: ['/opt/keycloak/bin/kc.sh']
           args: ['--verbose', 'start-dev', '--import-realm']
@@ -36,7 +43,6 @@ spec:
 
           ports:
             - containerPort: 8080
-              name: server
           volumeMounts:
             - name: seed
               mountPath: '/opt/keycloak/data/import'
@@ -45,16 +51,3 @@ spec:
         - name: seed
           configMap:
             name: cinepik-realm
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: cinepik-keycloak
-spec:
-  type: LoadBalancer
-  ports:
-    - port: 80
-      protocol: TCP
-      targetPort: server
-  selector:
-    app: cinepik-keycloak
