@@ -17,10 +17,10 @@ spec:
           resources:
             requests:
               cpu: 100m
-              memory: 128Mi
+              memory: 512Mi
             limits:
               cpu: 250m
-              memory: 256Mi
+              memory: 1Gi
           name: cinepik-keycloak
           command: ['/opt/keycloak/bin/kc.sh']
           args: ['--verbose', 'start-dev', '--import-realm']
@@ -43,7 +43,6 @@ spec:
 
           ports:
             - containerPort: 8080
-              name: server
           volumeMounts:
             - name: seed
               mountPath: '/opt/keycloak/data/import'

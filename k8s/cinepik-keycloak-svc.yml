@@ -3,10 +3,10 @@ kind: Service
 metadata:
   name: cinepik-keycloak
 spec:
-  type: LoadBalancer
+  type: ClusterIP
   ports:
-    - port: 80
+    - port: 8080
       protocol: TCP
-      targetPort: server
+      targetPort: 8080
   selector:
     app: cinepik-keycloak
