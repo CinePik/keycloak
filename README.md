@@ -18,6 +18,14 @@ Copy `cinepik-realm.json`  to the `data` directory for local deployment or copy 
 kubectl create configmap cinepik-realm --from-file=cinepik-realm.json=data/cinepik-realm.json
 ```
 
+### Export Keycloak seed file (optional)
+
+If you've changed something you need to export the seed file again and copy it to the host.
+
+```bash
+ /opt/keycloak/bin/kc.sh export --dir /tmp/keycloak/data/import --realm cinepik --users realm_file
+```
+
 ## Kubernetes Deployment
 
 ### Setup configs
