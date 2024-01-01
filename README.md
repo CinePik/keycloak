@@ -2,6 +2,12 @@
 
 Keycloak microservice for identity and access management.
 
+## Important URLs
+
+- [User login](http://localhost:8080/admin/cinepik/console/)
+- [Admin console](http://localhost:8080/admin/master/console/#/cinepik)
+- [Account management](http://localhost:8080/realms/cinepik/account/#/)
+
 ## Setup
 
 ### Load Keycloak seed file
