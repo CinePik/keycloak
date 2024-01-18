@@ -40,10 +40,6 @@ spec:
                 configMapKeyRef:
                   name: keycloak-config
                   key: KEYCLOAK_PORT
-            - name: KC_HEALTH_ENABLED
-              value: true
-            - name: KC_METRICS_ENABLED
-              value: true
 
           ports:
             - containerPort: 8080
@@ -56,13 +52,13 @@ spec:
             httpGet:
               path: /health/live
               port: server
-            initialDelaySeconds: 20
+            initialDelaySeconds: 60
             periodSeconds: 5
           readinessProbe:
             httpGet:
               path: /health/ready
               port: server
-            initialDelaySeconds: 20
+            initialDelaySeconds: 60
             periodSeconds: 5
       volumes:
         - name: seed
