@@ -15,6 +15,11 @@ services:
       - cinepik-network
     env_file:
       - .env
+    logging:
+      driver: gelf
+      options:
+        gelf-address: udp://127.0.0.1:${LS_PORT}
+        tag: cinepik-keycloak
 
 networks:
   cinepik-network:
