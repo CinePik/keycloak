@@ -40,6 +40,10 @@ spec:
                 configMapKeyRef:
                   name: keycloak-config
                   key: KEYCLOAK_PORT
+            - name: KC_HEALTH_ENABLED
+              value: 'true'
+            - name: KC_METRICS_ENABLED
+              value: 'true'
 
           ports:
             - containerPort: 8080
